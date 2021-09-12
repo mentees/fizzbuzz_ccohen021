@@ -1,14 +1,32 @@
-def fizzbuzz():
-    icount = 1
-    while icount <= 100:
-        if icount % 3 == 0 and icount % 5 == 0:
+def fizzbuzz(user_input):
+    for i in range(1, user_input + 1):
+        if i % 3 == 0 and i % 5 == 0:
             print("Fizzbuzz")
-        elif icount % 3 == 0:
+        elif i % 3 == 0:
             print("Fizz")
-        elif icount % 5 == 0:
+        elif i % 5 == 0:
             print("Buzz")
         else:
-            print(icount) 
-        icount = icount + 1
+            print(i)        
 
-fizzbuzz()
+def main(): 
+    # input (and validate)
+    while True:
+        # validate: only number
+        while True:
+            try:
+                limit = int(input("Enter a number to which you wish to count: "))
+                break
+            except ValueError:
+                print("Value must be a number. Please try again.")
+
+        # validate: value
+        if limit < 0 or limit > 1000:
+            print("Value out of range. (0 < Number < 1000)")
+        else:
+            break  
+
+    # process and output      
+    fizzbuzz(limit)
+
+main()
